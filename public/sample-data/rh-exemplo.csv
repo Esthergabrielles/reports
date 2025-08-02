@@ -1,0 +1,16 @@
+Funcionario,Departamento,Cargo,Salario,Data_Admissao,Status,Avaliacao
+João Silva,Comercial,Vendedor,4500,2022-01-15,Ativo,8.5
+Maria Santos,Comercial,Gerente,7500,2021-03-10,Ativo,9.2
+Pedro Costa,TI,Desenvolvedor,6000,2022-06-20,Ativo,8.8
+Ana Lima,Marketing,Analista,4800,2022-02-28,Ativo,8.1
+Carlos Souza,RH,Coordenador,5500,2021-11-05,Ativo,8.7
+Lucia Oliveira,Financeiro,Analista,5200,2022-04-12,Ativo,8.3
+Roberto Silva,Operações,Supervisor,5800,2021-08-30,Ativo,8.6
+Fernanda Costa,TI,Analista,5000,2022-07-18,Ativo,8.4
+Marcos Lima,Comercial,Vendedor,4200,2022-09-01,Ativo,7.9
+Patricia Santos,Marketing,Coordenadora,6200,2021-12-15,Ativo,9.0
+Rafael Oliveira,Financeiro,Gerente,8000,2020-05-20,Ativo,9.1
+Juliana Silva,RH,Analista,4600,2022-08-10,Ativo,8.2
+Diego Costa,Operações,Operador,3800,2022-10-05,Ativo,7.8
+Camila Lima,TI,Desenvolvedora,6200,2022-03-25,Ativo,8.9
+Bruno Santos,Comercial,Coordenador,6800,2021-07-12,Ativo,8.5
