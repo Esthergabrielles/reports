@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-Sistema web completo que transforma planilhas Excel/CSV simples em relatórios corporativos profissionais com visualizações interativas, templates por setor e integração com Power BI.
+Sistema web completo que transforma planilhas Excel/CSV simples em **relatórios executivos profissionais** com análise avançada de dados, insights automatizados, recomendações estratégicas e visualizações interativas.
 
 ## ✨ Funcionalidades Principais
 
@@ -30,6 +30,21 @@ Sistema web completo que transforma planilhas Excel/CSV simples em relatórios c
 - **Integração Power BI** (.pbids) para conexão direta
 - **Templates otimizados** para cada setor empresarial
 
+### 🧠 Análise Inteligente de Dados
+- **Detecção automática** de padrões e correlações
+- **Análise de qualidade** dos dados com métricas de completude
+- **Identificação de outliers** e anomalias
+- **Previsões básicas** baseadas em tendências históricas
+- **Insights automatizados** com níveis de confiança
+
+### 📋 Relatórios Executivos
+- **Sumário executivo** com principais descobertas
+- **Metodologia detalhada** e fonte dos dados
+- **Insights principais** categorizados por impacto
+- **Recomendações estratégicas** priorizadas por urgência
+- **Análise de correlações** com significância estatística
+- **Previsões** com intervalos de confiança
+
 ## 🚀 Como Usar
 
 ### 1. Upload de Dados
@@ -52,6 +67,12 @@ Sistema web completo que transforma planilhas Excel/CSV simples em relatórios c
 2. Baixe em HTML para compartilhamento web
 3. Gere arquivo Power BI para análises avançadas
 
+### 5. Relatório Executivo (Novo!)
+1. Selecione "Relatório Executivo" no gerador
+2. Visualize análise automática de dados
+3. Explore insights e recomendações
+4. Exporte relatório completo para stakeholders
+
 ## 📁 Arquivos de Exemplo
 
 O sistema inclui 3 planilhas de exemplo na pasta `public/sample-data/`:
@@ -68,6 +89,12 @@ O sistema inclui 3 planilhas de exemplo na pasta `public/sample-data/`:
 - **PDF**: jsPDF + html2canvas
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
+
+### Análise de Dados
+- **Correlações**: Algoritmos estatísticos para detecção de padrões
+- **Outliers**: Método IQR (Interquartile Range)
+- **Qualidade**: Métricas de completude e consistência
+- **Previsões**: Análise de tendências lineares
 
 ## 📊 Especificações Técnicas
 
@@ -105,6 +132,31 @@ O sistema inclui 3 planilhas de exemplo na pasta `public/sample-data/`:
 - Eficiência operacional (gráfico de linha)
 - Distribuição de recursos (gráfico de pizza)
 
+## 🎯 Relatórios Executivos
+
+### Estrutura Padrão
+1. **Sumário Executivo**
+   - Métricas principais
+   - Descobertas-chave
+   - Metodologia aplicada
+
+2. **Análise Detalhada**
+   - Visualizações interativas
+   - Correlações identificadas
+   - Previsões e tendências
+
+3. **Insights Principais**
+   - Categorizados por impacto (Alto/Médio/Baixo)
+   - Níveis de confiança estatística
+   - Classificação por tipo (Performance/Oportunidade/Risco/Tendência)
+
+4. **Recomendações Estratégicas**
+   - Priorizadas por urgência (Crítica/Alta/Média/Baixa)
+   - Cronograma de implementação
+   - Recursos necessários
+   - KPIs de acompanhamento
+   - Impacto esperado
+
 ## 🔧 Instalação e Desenvolvimento
 
 ```bash
@@ -120,6 +172,10 @@ npm run build
 
 ## 📈 Roadmap Futuro
 
+- [ ] Machine Learning para insights avançados
+- [ ] Análise de sentimento em dados textuais
+- [ ] Detecção automática de anomalias
+- [ ] Benchmarking com dados de mercado
 - [ ] Integração com Google Sheets
 - [ ] Conectores para bancos de dados
 - [ ] Templates personalizáveis
@@ -132,12 +188,14 @@ npm run build
 ## 🎯 Diferenciais Competitivos
 
 - **Simplicidade**: Interface intuitiva sem necessidade de treinamento
+- **Inteligência**: Análise automática com insights e recomendações
 - **Velocidade**: Processamento em menos de 30 segundos
 - **Flexibilidade**: Templates adaptáveis a qualquer setor
+- **Profissionalismo**: Relatórios executivos de nível corporativo
 - **Integração**: Compatibilidade nativa com Power BI
 - **Qualidade**: Relatórios com padrão corporativo profissional
 - **Custo**: Solução mais acessível que ferramentas enterprise
 
 ---
 
-**MVP v1.0** - Sistema completo e funcional para conversão de planilhas em relatórios corporativos profissionais.
+**MVP v2.0** - Sistema completo com análise inteligente de dados e geração automática de relatórios executivos profissionais.

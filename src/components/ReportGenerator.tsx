@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { SpreadsheetData, ReportTemplate, CompanyBranding } from '../types';
 import { ChartRenderer } from './ChartRenderer';
+import { ExecutiveReport } from './ExecutiveReport';
 import { FileProcessor } from '../utils/fileProcessor';
 import { ReportGenerator as ReportGen } from '../utils/reportGenerator';
-import { Download, FileText, Globe, Settings, Eye, Loader } from 'lucide-react';
+import { Download, FileText, Globe, Settings, Eye, Loader, BarChart3 } from 'lucide-react';
 
 interface ReportGeneratorProps {
   data: SpreadsheetData;
@@ -20,6 +21,7 @@ export const ReportGenerator: React.FC<ReportGeneratorProps> = ({ data, template
   
   const [isGenerating, setIsGenerating] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [reportType, setReportType] = useState<'standard' | 'executive'>('standard');
   const chartsRef = useRef<HTMLDivElement>(null);
 
   // Generate charts based on template and data
@@ -189,6 +191,31 @@ export const ReportGenerator: React.FC<ReportGeneratorProps> = ({ data, template
 
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-4">
+        <div className="flex bg-gray-100 rounded-lg p-1">
+          <button
+            onClick={() => setReportType('standard')}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              reportType === 'standard'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <BarChart3 className="w-4 h-4 mr-2 inline" />
+            Relatório Padrão
+          </button>
+          <button
+            onClick={() => setReportType('executive')}
+            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+              reportType === 'executive'
+                ? 'bg-white text-gray-900 shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <FileText className="w-4 h-4 mr-2 inline" />
+            Relatório Executivo
+          </button>
+        </div>
+        
         <button
           onClick={() => setShowPreview(!showPreview)}
           className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
@@ -226,56 +253,62 @@ export const ReportGenerator: React.FC<ReportGeneratorProps> = ({ data, template
 
       {/* Preview */}
       {showPreview && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <div className="mb-6">
-            <div 
-              className="p-6 rounded-lg text-white"
-              style={{ background: `linear-gradient(135deg, ${branding.primaryColor}, ${branding.secondaryColor})` }}
-            >
-              <h1 className="text-3xl font-bold mb-2">{branding.reportTitle}</h1>
-              <p className="text-lg opacity-90">{branding.companyName}</p>
-              <p className="text-sm opacity-75">
-                Gerado em: {new Date().toLocaleDateString('pt-BR')} às {new Date().toLocaleTimeString('pt-BR')}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-semibold text-gray-900 mb-2">Resumo dos Dados</h3>
-              <div className="space-y-2 text-sm">
-                <p><strong>Arquivo:</strong> {data.fileName}</p>
-                <p><strong>Registros:</strong> {data.totalRows.toLocaleString()}</p>
-                <p><strong>Colunas:</strong> {data.totalColumns}</p>
-                <p><strong>Template:</strong> {template.name}</p>
-              </div>
-            </div>
-            
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-semibold text-gray-900 mb-2">Visualizações</h3>
-              <div className="space-y-2 text-sm">
-                {charts.map((chart, index) => (
-                  <p key={index}>
-                    <strong>{chart.type.toUpperCase()}:</strong> {chart.title}
+        <>
+          {reportType === 'executive' ? (
+            <ExecutiveReport data={data} template={template} branding={branding} />
+          ) : (
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <div className="mb-6">
+                <div 
+                  className="p-6 rounded-lg text-white"
+                  style={{ background: `linear-gradient(135deg, ${branding.primaryColor}, ${branding.secondaryColor})` }}
+                >
+                  <h1 className="text-3xl font-bold mb-2">{branding.reportTitle}</h1>
+                  <p className="text-lg opacity-90">{branding.companyName}</p>
+                  <p className="text-sm opacity-75">
+                    Gerado em: {new Date().toLocaleDateString('pt-BR')} às {new Date().toLocaleTimeString('pt-BR')}
                   </p>
-                ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h3 className="font-semibold text-gray-900 mb-2">Resumo dos Dados</h3>
+                  <div className="space-y-2 text-sm">
+                    <p><strong>Arquivo:</strong> {data.fileName}</p>
+                    <p><strong>Registros:</strong> {data.totalRows.toLocaleString()}</p>
+                    <p><strong>Colunas:</strong> {data.totalColumns}</p>
+                    <p><strong>Template:</strong> {template.name}</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <h3 className="font-semibold text-gray-900 mb-2">Visualizações</h3>
+                  <div className="space-y-2 text-sm">
+                    {charts.map((chart, index) => (
+                      <p key={index}>
+                        <strong>{chart.type.toUpperCase()}:</strong> {chart.title}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div ref={chartsRef} className="space-y-6">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Gráficos e Visualizações</h3>
+                <div className={`grid gap-6 ${
+                  template.layout === 'grid' ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'
+                }`}>
+                  {charts.map((chart, index) => (
+                    <div key={index} className="chart-container">
+                      <ChartRenderer config={chart} color={branding.primaryColor} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div ref={chartsRef} className="space-y-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Gráficos e Visualizações</h3>
-            <div className={`grid gap-6 ${
-              template.layout === 'grid' ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'
-            }`}>
-              {charts.map((chart, index) => (
-                <div key={index} className="chart-container">
-                  <ChartRenderer config={chart} color={branding.primaryColor} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          )}
+        </>
       )}
     </div>
   );
